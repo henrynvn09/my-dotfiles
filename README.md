@@ -165,8 +165,6 @@ systemctl --user enable syncthing
     - Symbols
 - md to anki
     - [obsidian to anki](https://github.com/Pseudonium/Obsidian_to_Anki)
-        - need `pip install gooey`
-        - `python ~/Obsidian_to_Anki-3.4.1/obsidian_to_anki.py -R ~/Documents/notes/College/Fall-2021/Vocabulary -r`
 ## Printer and scanner
 
 - install:
@@ -234,9 +232,9 @@ sudo pacman -S wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib3
 
 ## commands
 
-- fontconfig để install font `fc-cache -v`
+- fontconfig install font `fc-cache -v`
 - update packages Pacman -Syu
-- remove unnecessary Pacman -Qn / -Qdt dont need
+- remove unnecessary Pacman -Qn / -Qdt
 - remove completely Pacman -Rns package
 
 - error import pgp on yay install:  gpg --keyserver pool.sks-keyservers.net --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
