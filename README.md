@@ -1,7 +1,7 @@
 # My dotfiles
 **YOU'D BETTER LOOK AT THE RAW VERSION OF README**
 
-![screenshots/image.png]
+![Dec-2-2021-23-07](screenshots/image.png)
 
 ## remove dual boot
 
