@@ -52,7 +52,7 @@ get_duration() {
 
 }
 
-KEY=""
+KEY="<Key here>"
 # https://openweathermap.org/city/
 CITY=""
 UNITS="imperial"
