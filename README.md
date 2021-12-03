@@ -1,4 +1,5 @@
 # My dotfiles
+**YOU'D BETTER LOOK AT THE RAW VERSION OF README**
 
 ## remove dual boot
 
