@@ -51,8 +51,8 @@ get_icon() {
     echo $icon
 }
 
-APIKEY="yVXjUwRROYQSrE6V1rQ3KC4SU8UHxXQH"
-APIKEY1="bQlFJMBiOIRSjlTa5IaQC3KyLAeTEUWm"
+APIKEY="<Fill here>"
+APIKEY1="<Fill here>"
 METRIC="true"
 SYMBOL="°"
 
