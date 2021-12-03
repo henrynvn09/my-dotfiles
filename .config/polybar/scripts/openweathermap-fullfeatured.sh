@@ -52,7 +52,7 @@ get_duration() {
 
 }
 
-KEY="468a57b1ef37cede595dc4d217d498f9"
+KEY=""
 # https://openweathermap.org/city/
 CITY=""
 UNITS="imperial"
