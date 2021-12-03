@@ -1,0 +1,53 @@
+[CompactMode]
+FontWeight=50
+
+[DetailsMode]
+FontWeight=50
+PreviewSize=96
+
+[ExtractDialog]
+DirHistory[$e]=$HOME/Downloads/
+eDP-1 Height 1920x1080=560
+eDP-1 Width 1920x1080=1280
+
+[General]
+Version=201
+ViewPropsTimestamp=2021,8,9,15,53,43.443
+
+[IconsMode]
+FontWeight=50
+
+[KFileDialog Settings]
+Recent Files[$e]=file:$HOME,file:$HOME
+Recent URLs[$e]=file:$HOME/Downloads/
+detailViewIconSize=16
+
+[KPropertiesDialog]
+eDP-1 Height 1920x1080=458
+eDP-1 Width 1920x1080=368
+eDP1 Height 1920x1080=458
+eDP1 Width 1920x1080=419
+
+[MainWindow]
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAwAAAAAAAABzAAAD/fwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAIA////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAAlAAAD/QAAAEYA////AAAAAQAAAAAAAAAA/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAAAD/////AAAAAgD///8AAAADAAAAAAAAAAD8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAA/////wAAAAIA////AAAHBwAAA/0AAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+ToolBarsMovable=Disabled
+eDP-1 Height 1920x1080=1058
+eDP-1 Width 1920x1080=1920
+eDP-1 XPosition 1920x1080=0
+eDP-1 YPosition 1920x1080=22
+eDP1 Height 1920x1080=1032
+eDP1 Width 1920x1080=939
+eDP1 XPosition 1920x1080=13
+eDP1 YPosition 1920x1080=35
+
+[Open-with settings]
+CompletionMode=1
+History=obsi,zat
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs
+
+[SettingsDialog]
+eDP1 Height 1920x1080=440
+eDP1 Width 1920x1080=589

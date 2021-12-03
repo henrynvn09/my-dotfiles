@@ -1,0 +1,312 @@
+; vim:ft=cfg
+; POLYBAR CONFIG
+
+
+[colors]
+background = #1d1f28
+foreground = #fdfdfd
+foreground-alt = #fdfdfd
+primary = #f59cff
+secondary = #8297f4
+alert = #ea8bff
+
+
+[bar/base]
+monitor = ${env:MONITOR:HDMI-1}
+
+; Dimensions
+width = 100%
+height = 22
+offset-y = 0
+offset-x = 0
+border-top-size = 0
+border-bottom-size = 0
+border-right-size = 0
+border-left-size = 0
+
+; Location
+bottom = false
+wm-restack = i3
+; override-redirect = true
+
+; Fonts
+font-0 = "FiraGO:size=11;2"
+font-1 = "Weather Icons:size=12;1"
+font-2 = "FuraCode Nerd Font:pixelsize=13;3"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
+font-4 = "Font Awesome 5 Free:style=Regular:pixelsize=12;2"
+font-5 = "Font Awesome 5 Brands Regular:pixelsize=12;2"
+font-7 = "JoyPixels:scale=10:pixelsize=11;1"
+font-8 = "icomoon\-feather:pixelsize=12;3"
+font-9 = "FuraCode Nerd Font:pixelsize=16;3"
+font-6 = "KlokanTech Noto Sans CJK Regular:size=11;2"
+
+; Colors
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+; Misc
+fixed-center = true
+padding-left = 2
+padding-right = 2
+module-margin = 2
+#tray-position = ${env:TRAY_POSITION:right}
+tray-position = left
+tray-detached = true
+tray-background = ${colors.background}
+line-size = 1
+
+; Modules
+;modules-left = wlan ibus pomodoro playerctl #title
+modules-left = ibus wlan pomodoro playerctl #title
+modules-center = i3
+modules-right = kdeconnect notion googleCalendar weatherforecast updates-arch-combined battery pulseaudio date-time
+
+
+[module/notion]
+type = custom/text
+content = %{T2}ﴬ%{T-} Notion
+click-left = notion
+;click-left = firefox --new-tab https://www.notion.so/
+
+[module/googleCalendar]
+type = custom/text
+content = %{T2}%{T-} Calendar
+click-left = firefox --new-tab https://calendar.google.com/
+
+[module/vpn-wireguard-wg]
+type = custom/script
+interval = 5
+exec = ~/.config/polybar/scripts/vpn-wireguard-wg.sh
+click-left = ~/.config/polybar/scripts/vpn-wireguard-wg.sh --toggle &
+
+
+[module/wlan]
+type = internal/network
+interface = wlp0s20f3
+
+label-connected = %{A1:~/.config/polybar/scripts/rofi.sh -n:}%{T8}%{T-}  %essid%%{A}
+label-disconnected = %{A1:~/.config/polybar/scripts/rofi.sh -n:}%{T8}%{T-}  Not Connected%{A}
+interval = 5
+
+
+[module/cpu]
+type = internal/cpu
+label = %{T4}%{T-} %percentage%%
+
+
+[module/memory]
+type = internal/memory
+label = %{T4}%{T-} %gb_used%
+interval = 3
+
+
+[module/keyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+label-layout = %{T5}%{T-} %layout%
+
+[module/ibus]
+type = custom/script
+interval = 1
+format-prefix =%{T5} %{T-}
+exec = ~/.config/polybar/scripts/ibus-get-input.sh
+
+[module/spotify]
+type = custom/script
+interval = 5
+format-prefix ="%{T7}%{T-}"
+format = <label>
+exec = python ~/.config/polybar/scripts/spotify_status.py -f ' {song} - {artist}'
+click-left = i3-msg '[class="Spotify"] focus' &
+
+
+[module/pomodoro]
+type = custom/script
+
+exec = ~/.config/polybar/scripts/pomodoro_timer.py #--worktime 1200 --breaktime 60 --longbreaktime 600
+tail = true
+
+label = %output%
+click-left = ~/.config/polybar/scripts/pomodoro_timer.py toggle
+click-right = ~/.config/polybar/scripts/pomodoro_timer.py end
+click-middle = ~/.config/polybar/scripts/pomodoro_timer.py lock
+scroll-up = ~/.config/polybar/scripts/pomodoro_timer.py time +60
+scroll-down = ~/.config/polybar/scripts/pomodoro_timer.py time -60
+
+[module/playerctl]
+type = custom/script
+interval = 2
+format = <label>
+exec = python ~/.config/polybar/scripts/playerctl_status.py
+click-left = playerctl play-pause
+click-right = i3-msg '[class="Spotify"] focus' &
+
+[module/title]
+type = internal/xwindow
+
+format = <label>
+
+label = %{T2}%{T-} %title%
+label-maxlen = 30
+
+[module/i3]
+type = internal/i3
+
+ws-icon-0 = 1;%{T1}1  %{T-}%{T10}%{T-}
+ws-icon-1 = 2;%{T1}2  %{T-}
+ws-icon-2 = 3;%{T1}3  %{T-}
+ws-icon-3 = 4;%{T1}4  %{T-}%{T5}%{T-}
+ws-icon-4 = 5;%{T1}5  %{T-}%{T1}%{T-}
+ws-icon-5 = 6;%{T1}6  %{T-}
+ws-icon-6 = 7;%{T1}7  %{T-}%{T4}%{T-}
+ws-icon-7 = 8;%{T1}8  %{T-}
+ws-icon-8 = 9;%{T1}9  %{T-}%{T1}阮%{T-}
+ws-icon-9 = 10;%{T1}10  %{T-}
+pin-workspaces = true
+enable-scroll = true
+
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-padding = 1
+label-mode-background = ${colors.secondary}
+
+label-focused = %icon%
+label-focused-foreground = ${colors.primary}
+label-focused-underline = #1cfff7
+label-focused-padding = 2
+
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+label-visible = %icon%
+label-visible-foreground = ${colors.primary}
+label-visible-padding = 2
+
+label-urgent = %icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+[module/weatherforecast]
+type = custom/script
+exec = ~/.config/polybar/scripts/accuweather.sh -g
+interval = 1200
+click-left = ~/.config/polybar/scripts/accuweather.sh -n
+click-right = firefox --new-tab https://www.accuweather.com/
+
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
+interval = 1200
+;label-font = 9
+click-right = firefox --new-tab https://www.accuweather.com/en/us/garden-grove/92843/current-weather/332132
+
+
+[module/updates-arch-combined]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-arch-combined.sh
+;interval = 6000
+double-click-left = ~/.config/polybar/scripts/keyboard-toggle.sh
+
+
+[module/github]
+type = internal/github
+token = ${file:~/.secrets/github-notification.token}
+empty-notifications = false
+interval = 30
+format = <label>
+label = %{T1}󰊤%{T-} %notifications%
+
+
+[module/kdeconnect]
+type = custom/script
+exec = "~/.config/polybar/scripts/polybar-kdeconnect.sh -d"
+tail = true
+
+
+[module/battery]
+type = internal/battery
+#full-at = 99
+time-format = %H:%M
+
+battery = BAT0
+adapter = AC
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = #f37f97
+format-charging = <animation-charging> <label-charging>
+format-full = <ramp-capacity> <label-full>
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+
+
+[module/backlight]
+type = internal/backlight
+; $ ls -1 /sys/class/backlight/
+card = intel_backlight
+
+format-spacing = 1
+format = %{T1}<ramp>%{T-}<label>
+label = %percentage%%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+right-5 = 
+ramp-6 = 
+ramp-7 = 
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = %{T7}<ramp-volume>%{T-} <label-volume>%{A}
+use-ui-max = true
+
+label-muted = %{T1}婢%{T-}%{A}
+label-muted-foreground = #f37f97
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 奔
+ramp-volume-3 = 奔
+ramp-volume-4 = 墳
+
+
+[module/date-time]
+type = internal/date
+date-alt = %{T3}%{T-}  %b %e %a  %{T5}%{T-} %H:%M%{A}
+date = %{T5}%{T-} %H:%M%{A}
+label = %date%
+interval = 1.0
+format = %{A3:firefox --new-tab calendar.google.com:}<label>%{A}
+
+
+[module/popup-calendar]
+type = custom/script
+interval = 60
+exec = ~/.config/polybar/scripts/popup-calendar.sh

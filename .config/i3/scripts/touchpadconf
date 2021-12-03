@@ -1,0 +1,14 @@
+#!/bin/sh
+# Script to toggle my laptops touchpad
+id="$(xinput list | grep -Eo 'Touchpad.*id=[0-9]*' | grep -Eo '[0-9]*')"
+mode="$(echo "$id" | xargs -I % xinput --list-props % | grep 'Device Enabled' | grep -Eo ':.*[0|1]' | grep -Eo '[0|1]')"
+
+#xinput list-props id
+if [ "$mode" -eq "1" ]; then
+  xinput set-prop "$id" "libinput Accel Speed" 0.62
+  xinput set-prop "$id" "libinput Disable While Typing Enabled" 1
+  xinput set-prop "$id" "libinput Natural Scrolling Enabled" 1
+  xinput set-prop "$id" "libinput Tapping Enabled" 1
+  xinput set-prop "$id" "libinput Middle Emulation Enabled" 1
+fi
+
